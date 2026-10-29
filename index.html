@@ -58,7 +58,7 @@
   @keyframes grain { 0%{transform:translate(0,0)} 20%{transform:translate(-5%,3%)} 40%{transform:translate(4%,-4%)} 60%{transform:translate(-3%,5%)} 80%{transform:translate(5%,2%)} 100%{transform:translate(0,0)} }
 
   /* ---------- HERO ---------- */
-  .hero { position: relative; min-height: 100svh; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding: max(28px, env(safe-area-inset-top)) 16px 0; text-align: center;
+  .hero { position: relative; min-height: 100svh; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 110px 16px 170px; text-align: center;
     background:
       radial-gradient(120% 60% at 50% 100%, rgba(255,110,30,.35), transparent 60%),
       radial-gradient(80% 50% at 50% 0%, rgba(110,8,11,.45), transparent 70%),
@@ -90,8 +90,8 @@
   @keyframes blink { 50% { opacity: 0; } }
 
   .banner { display: inline-block; margin-top: 10px; position: relative; }
-  .banner span { position: relative; z-index: 1; display: block; font-family: "Bangers", cursive; letter-spacing: 3px; color: #fff;
-    font-size: clamp(2.4rem, 12vw, 4.6rem); padding: 4px 22px 0; text-shadow: 3px 3px 0 #000; }
+  .banner span { position: relative; z-index: 1; display: block; font-family: "Rubik", sans-serif; font-weight: 900; font-style: italic; letter-spacing: 1px; color: #fff;
+    font-size: clamp(2.1rem, 10.5vw, 4rem); padding: 6px 22px 4px; text-shadow: 3px 3px 0 #000; }
   .banner::before { content: ""; position: absolute; inset: 0; background: var(--red);
     clip-path: polygon(3% 8%, 22% 0, 48% 6%, 76% 0, 100% 9%, 97% 52%, 100% 92%, 74% 100%, 46% 93%, 20% 100%, 0 90%, 2% 48%);
     transform-origin: left; transform: scaleX(0); animation: swipe .6s 1.6s cubic-bezier(.7,0,.2,1) forwards;
@@ -127,7 +127,7 @@
     transform: rotate(-3deg); opacity: 0; animation: fadeIn .6s 3.9s forwards; color: #fff; text-shadow: 2px 2px 0 #000; }
   .tagline em { font-style: normal; color: var(--red-hi); }
 
-  .hands { position: absolute; left: 0; right: 0; bottom: -6px; height: 140px; z-index: 3; pointer-events: none; }
+  .hands { position: absolute; left: 0; right: 0; bottom: -40px; height: 140px; z-index: 4; pointer-events: none; }
   .hand { position: absolute; bottom: 0; width: 70px; transform-origin: 50% 100%; transform: translateY(110%); }
   .hand.up { animation: handUp 1.2s cubic-bezier(.3,1.4,.5,1) forwards, claw 2.4s ease-in-out infinite; }
   @keyframes handUp { to { transform: translateY(0) rotate(var(--r)); } }
@@ -252,7 +252,7 @@
   footer .small { color: var(--muted); font-size: .85rem; margin-top: 18px; }
 
   /* ---------- Sangre ---------- */
-  .top-blood { position: absolute; top: 0; left: 0; right: 0; height: 140px; z-index: 3; pointer-events: none; }
+  .top-blood { position: absolute; top: 0; left: 0; right: 0; height: 95px; z-index: 3; pointer-events: none; }
   .top-blood svg { width: 100%; height: 100%; display: block; }
   .top-blood .d { transform-box: fill-box; transform-origin: top; transform: scaleY(0); animation: dripDown var(--t, 4s) var(--dl, 0s) cubic-bezier(.5,0,.4,1) forwards; }
   @keyframes dripDown { to { transform: scaleY(1); } }
@@ -267,8 +267,8 @@
   .card .ic, .card > div { position: relative; z-index: 1; }
 
   /* ---------- Zombies caminando ---------- */
-  .zombie { position: absolute; bottom: 18px; left: 0; width: 86px; z-index: 3; pointer-events: none; animation: walk 34s linear infinite; }
-  .zombie.slow { width: 70px; bottom: 30px; animation-duration: 48s; animation-delay: -20s; opacity: .75; filter: brightness(.7); }
+  .zombie { position: absolute; bottom: 40px; left: 0; width: 86px; z-index: 3; pointer-events: none; animation: walk 34s linear infinite; }
+  .zombie.slow { width: 64px; bottom: 60px; animation-duration: 48s; animation-delay: -20s; opacity: .75; filter: brightness(.7); }
   .zombie svg { width: 100%; overflow: visible; animation: lurch 1.3s ease-in-out infinite; }
   .zombie .legA { transform-origin: 50px 100px; animation: stepA 1.3s ease-in-out infinite; }
   .zombie .legB { transform-origin: 50px 100px; animation: stepB 1.3s ease-in-out infinite; }
@@ -531,7 +531,7 @@
       <path d="M43 48 L52 14 Q54 8 58 10 Q62 12 60 18 L50 52"/>
       <path d="M54 66 L66 54 Q70 50 68 46 Q64 42 60 46 L50 58"/></g>
       <path d="M28 96 l6 8 M40 110 l-5 6 M30 120 l8 2" stroke="#7a0a0d" stroke-width="3"/></svg>`;
-    [[4, 90, -14, 4.2], [20, 70, 8, 4.6], [70, 76, -6, 4.9], [86, 96, 14, 4.4]].forEach(([l, h, r, d]) => {
+    [[2, 58, -16, 4.2], [80, 62, 14, 4.4]].forEach(([l, h, r, d]) => {
       const el = document.createElement("div");
       el.className = "hand up";
       el.innerHTML = hand;
@@ -591,7 +591,7 @@
       const d = document.createElement("div");
       d.className = "falling";
       d.style.left = (x / 400 * hero.clientWidth - 4) + "px";
-      d.style.top = (h / 140 * 140 + 4) + "px";
+      d.style.top = (h / 140 * 95 + 4) + "px";
       d.style.setProperty("--fy", (hero.clientHeight * .7) + "px");
       hero.appendChild(d);
       setTimeout(() => d.remove(), 1500);
